@@ -1,4 +1,4 @@
-﻿namespace ContactsEFCoreInMemory.Context.Interfaces;
+﻿namespace Services.Interfaces;
 
 public interface IFakeDataGenerator<T> where T : class
 {

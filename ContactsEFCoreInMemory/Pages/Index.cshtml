@@ -4,18 +4,17 @@
     ViewData["Title"] = "Home page";
 }
 
-<table class="table table-responsive">
+<table class="table">
     <thead>
-        </th>#</tr>
         <tr>
+            <th>#</th>
             <th>
                 @Html.DisplayNameFor(model => model.Contact.Name)
             </th>
-        </tr>
-        <tr>
             <th>
                 @Html.DisplayNameFor(m => m.Contact.Email)
-        <tr><th>
+            </th>
+        </tr>
     </thead>
     <tbody>
         @foreach (var contact in Model.Contacts)
@@ -28,3 +27,12 @@
         }
     </tbody>
 </table>
+List
+<ul>
+    @foreach (var contact in Model.Contacts)
+    {
+        <li>@contact.Id</li>
+        <li>@contact.Name</li>
+        <li>@contact.Email</li>
+    }
+</ul>

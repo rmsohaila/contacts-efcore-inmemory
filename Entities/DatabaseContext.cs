@@ -1,6 +1,6 @@
-﻿using ContactsEFCoreInMemory.Context.Seeders;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace ContactsEFCoreInMemory.Context;
+namespace Entities;
 
 public class DatabaseContext : DbContext
 {
@@ -10,9 +10,10 @@ public class DatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        //builder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly)
+        //    .Seed(this.Database.GetService<IFakeDataGenerator<Contact>>());
+
         base.OnModelCreating(builder);
-        builder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly)
-            .Seed(this.Database.GetService<IFakeDataGenerator<Contact>>());
     }
 
     public DbSet<Contact> Contacts { get; set; }

@@ -1,6 +1,8 @@
-﻿namespace ContactsEFCoreInMemory.Context;
+﻿using Services.Interfaces;
 
-public class FakeDataService<T> : IFakeDataGenerator<T> where T : class, IPrimaryKey, new()
+namespace Services;
+
+public class FakeDataService<T> : IFakeDataGenerator<T> where T : class, new()
 {
     /// <summary>
     /// Generates a collection of type T based on the properties in T
@@ -13,14 +15,7 @@ public class FakeDataService<T> : IFakeDataGenerator<T> where T : class, IPrimar
     /// </summary>
     /// <param name="length">The size of the collection to be passed</param>
     /// <returns>A collection of type T based on the length passed</returns>
-    public List<T> Collection(int length)
-    {
-        var id = 1;
-        GenFu.GenFu.Configure<T>()
-            .Fill(p => p.Id, () => id++);
-
-        return GenFu.GenFu.ListOf<T>(length);
-    }
+    public List<T> Collection(int length) => GenFu.GenFu.ListOf<T>(length);
 
     /// <summary>
     /// Generates an object of type T with data
