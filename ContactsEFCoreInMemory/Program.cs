@@ -3,10 +3,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-// Register InMemory database context
-builder.Services.AddDbContext<ContactsContext>(options => options.UseInMemoryDatabase("Contacts"));
 
+// Register Fake Data service
 builder.Services.AddSingleton(typeof(IFakeDataGenerator<>), typeof(FakeDataService<>));
+
+// Register InMemory database context
+builder.Services.AddDbContext<ContactsContext>(options =>
+    options.UseInMemoryDatabase("Contacts"));
 
 var app = builder.Build();
 
