@@ -8,7 +8,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton(typeof(IFakeDataGenerator<>), typeof(FakeDataService<>));
 
 // Register InMemory database context
-builder.Services.AddDbContext<ContactsContext>(options =>
+builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseInMemoryDatabase("Contacts"));
 
 var app = builder.Build();

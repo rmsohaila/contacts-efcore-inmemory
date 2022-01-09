@@ -1,13 +1,20 @@
-﻿namespace ContactsEFCoreInMemory.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-public class Contact
+namespace ContactsEFCoreInMemory.Models;
+
+public class Contact : IPrimaryKey
 {
-    [Key]
     public int Id { get; set; }
+
     [Required]
     public string Name { get; set; }
 
     [Required]
     [EmailAddress]
     public string Email { get; set; }
+}
+
+public interface IPrimaryKey
+{
+    int Id { get; set; }
 }
