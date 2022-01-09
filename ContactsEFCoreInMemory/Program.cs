@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+// Register InMemory database context
+builder.Services.AddDbContext<ContactsContext>(options => options.UseInMemoryDatabase("Contacts"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
